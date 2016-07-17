@@ -42,9 +42,6 @@ namespace Searches
         private static int BinarySearch(Array array, int index, int length, Object value, IComparer comparer)
         {
             if (array == null) throw new ArgumentNullException("array");
-            int lb = array.GetLowerBound(0);
-            if (index < lb || length < 0) throw new ArgumentOutOfRangeException(index < lb ? "index" : "length");
-            if (array.Length - (index - lb) < length) throw new ArgumentException("Argument_InvalidOffLen");
             if (array.Rank != 1) throw new RankException("Rank_MultiDimNotSupported");
             if (comparer == null) comparer = Comparer.Default;
 

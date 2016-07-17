@@ -34,16 +34,22 @@ namespace Searches
 
         }
 
-        public static int Search(Array array,object obj) =>
-             BinarySearch(array, array.GetLowerBound(0), array.GetUpperBound(0)+1, obj,null);
-        public static int Search(Array array, object obj, IComparer comparer) =>
-            BinarySearch(array, array.GetLowerBound(0), array.GetUpperBound(0) + 1, obj, comparer);
+        public static int Search(Array array, object obj)
+        {
+            if (ReferenceEquals(array, null)) throw new ArgumentNullException();
+            return BinarySearch(array, array.GetLowerBound(0), array.GetUpperBound(0)+1, obj,null);
+        }
+
+        public static int Search(Array array, object obj, IComparer comparer)
+        {
+            if (ReferenceEquals(array, null)) throw new ArgumentNullException();
+            return BinarySearch(array, array.GetLowerBound(0), array.GetUpperBound(0) + 1, obj, comparer);
+        }
 
         private static int BinarySearch(Array array, int index, int length, Object value, IComparer comparer)
         {
-            if (array == null) throw new ArgumentNullException("array");
             if (array.Rank != 1) throw new RankException("Rank_MultiDimNotSupported");
-            if (comparer == null) comparer = Comparer.Default;
+            if (ReferenceEquals(comparer,null)) comparer = Comparer.Default;
 
             Object[] objArray = array as Object[];       
             if (objArray != null)
@@ -62,8 +68,8 @@ namespace Searches
             while (lo <= hi)
             {
                 int i = GetMedian(lo, hi);
-
                 int c;
+
                 try
                 {
                     c = comparer.Compare(@delegate(i), value);
@@ -73,14 +79,8 @@ namespace Searches
                     throw new InvalidOperationException("InvalidOperation_IComparerFailed");
                 }
                 if (c == 0) return i;
-                if (c < 0)
-                {
-                    lo = i + 1;
-                }
-                else
-                {
-                    hi = i - 1;
-                }
+                if (c < 0)  lo = i + 1;
+                else        hi = i - 1;
             }
             return ~lo;
         }

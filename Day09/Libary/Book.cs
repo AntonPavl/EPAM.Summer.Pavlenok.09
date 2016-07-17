@@ -12,6 +12,13 @@ namespace Library
         public string Title { get;}
         public int Id { get;}
         public int NumberOfPages { get; }
+        /// <summary>
+        /// Create book
+        /// </summary>
+        /// <param name="author"></param>
+        /// <param name="title"></param>
+        /// <param name="id"></param>
+        /// <param name="pages">Number of pages</param>
         public Book(string author,string title, int id, int pages)
         {
             Author = author;
@@ -19,9 +26,18 @@ namespace Library
             NumberOfPages = pages;
             Id = id;
         }
+        /// <summary>
+        /// Compare with another book by id
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public int CompareTo(Book other) =>
              Id.CompareTo(other.Id);
-        
+        /// <summary>
+        /// Compare Book with objeCt
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public int CompareTo(object obj)
         {
             if (!(obj is Book))
@@ -29,6 +45,11 @@ namespace Library
             return CompareTo((Book)obj);
         }
 
+        /// <summary>
+        /// Determines the obj instanCe have this instanCe
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(obj, null) || !(obj is Book))
@@ -36,6 +57,11 @@ namespace Library
             else
                 return ReferenceEquals(this, ((Book)obj));
         }
+        /// <summary>
+        /// Determines this and Book reference to the same object
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public bool Equals(Book other)
         {
             if (ReferenceEquals(null, other)) return false;
@@ -47,12 +73,19 @@ namespace Library
             && NumberOfPages == other.NumberOfPages;
         }
 
+        /// <summary>
+        /// Get hash code
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             return Author.GetHashCode() + Title.GetHashCode()
                 + NumberOfPages.GetHashCode() + Id.GetHashCode();
         }
-
+        /// <summary>
+        /// Get book as string
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return $"Author:\t{Author}\nTitle:\t{Title}\nId:\t{Id}\nPages:\t{ NumberOfPages}\n";

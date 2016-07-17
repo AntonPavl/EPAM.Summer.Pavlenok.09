@@ -34,11 +34,8 @@ namespace Searches
 
         }
 
-        public static int Search(Array array, object obj)
-        {
-            if (ReferenceEquals(array, null)) throw new ArgumentNullException();
-            return BinarySearch(array, array.GetLowerBound(0), array.GetUpperBound(0)+1, obj,null);
-        }
+        public static int Search(Array array, object obj) =>
+            Search(array, obj, null);
 
         public static int Search(Array array, object obj, IComparer comparer)
         {

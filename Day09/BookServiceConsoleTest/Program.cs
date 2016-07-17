@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using BookListService;
 using Library;
+using NLog;
+
 namespace BookServiceConsoleTest
 {
     class Program
@@ -32,7 +34,7 @@ namespace BookServiceConsoleTest
                 Book temp = new Book(RandomString(10), RandomString(10), i, i * 10);
                 books.Add(temp);
             }
-
+            Logger logger = LogManager.GetCurrentClassLogger();
             bbls.SaveBooks(books);
             books = bbls.LoadBooks();
             Console.WriteLine(books.Count);

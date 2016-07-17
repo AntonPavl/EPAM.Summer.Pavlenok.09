@@ -5,11 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Library;
 using System.IO;
+using NLog;
 
 namespace BookListService
 {
     public class BookListServices
     {
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         private class Comparer : IComparer<Book>
         {
             public int Compare(Book a, Book b)
@@ -30,6 +32,7 @@ namespace BookListService
         public BookListServices(List<Book> books)
         {
             Books = books;
+            logger.Info("BLS created");
         }
         /// <summary>
         /// Add book to List
@@ -37,7 +40,10 @@ namespace BookListService
         /// <param name="book">Add book</param>
         public void AddBook(Book book)
         {
+            logger.Info("Start add book operation");
             if (!Books.Contains(book)) Books.Add(book);
+            logger.Info("Add book succes");
+
         }
         /// <summary>
         /// Remove book from list
@@ -45,7 +51,9 @@ namespace BookListService
         /// <param name="book">Remove books</param>
         public void RemoveBook(Book book)
         {
+            logger.Info("Start remove book operation");
             if (Books.Contains(book)) Books.Remove(book);
+            logger.Info("Remove book succes");
         }
         /// <summary>
         /// Find book by criterion

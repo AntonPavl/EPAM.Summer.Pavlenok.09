@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BookListService
 {
-    public class BinaryBookListStorage : IBookListStorage
+  public class BinaryBookListStorage : IBookListStorage
     {
         private string filepath;
         /// <summary>
@@ -30,14 +30,14 @@ namespace BookListService
             using (BinaryReader reader = new BinaryReader(File.Open(filepath, FileMode.Open)))
             {
                 while (reader.PeekChar() > -1)
-                {
-                    Book temp = new Book(
-                        reader.ReadString(),
-                        reader.ReadString(),
-                        reader.ReadInt32(),
-                        reader.ReadInt32());
-                    ret.Add(temp);
-                }
+                { 
+                Book temp = new Book(
+                    reader.ReadString(),
+                    reader.ReadString(),
+                    reader.ReadInt32(),
+                    reader.ReadInt32());
+                ret.Add(temp);
+                 }
             }
             return ret;
         }

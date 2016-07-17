@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventTimer", "EventTimer\Ev
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimerTestConsole", "TimerTestConsole\TimerTestConsole.csproj", "{0063C999-8D60-4EC3-8F9A-489253351800}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Searches", "Searches\Searches.csproj", "{101C98BA-81E5-4D49-8730-D689C79CEC9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinarySearcherNTest", "BinarySearcherNTest\BinarySearcherNTest.csproj", "{067456C0-086C-46A8-B37F-1405717B7BFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{0063C999-8D60-4EC3-8F9A-489253351800}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0063C999-8D60-4EC3-8F9A-489253351800}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0063C999-8D60-4EC3-8F9A-489253351800}.Release|Any CPU.Build.0 = Release|Any CPU
+		{101C98BA-81E5-4D49-8730-D689C79CEC9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{101C98BA-81E5-4D49-8730-D689C79CEC9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{101C98BA-81E5-4D49-8730-D689C79CEC9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{101C98BA-81E5-4D49-8730-D689C79CEC9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{067456C0-086C-46A8-B37F-1405717B7BFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{067456C0-086C-46A8-B37F-1405717B7BFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{067456C0-086C-46A8-B37F-1405717B7BFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{067456C0-086C-46A8-B37F-1405717B7BFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

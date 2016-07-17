@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EventTimer;
+using System.IO;
+
 namespace TimerTestConsole
 {
     class Program
@@ -65,15 +67,15 @@ namespace TimerTestConsole
         static void Main(string[] args)
         {
             var t = new Timer(200);
-            var t2 = new Timer(1000); t2.SetEventData(new TimerEventData("RARELY","WoooW"));
+            var t2 = new Timer(1000); t2.SetEventData(new TimerEventData("RARELY", "WoooW"));
             var p1 = new Person1(t);
             var p2 = new Person2(t);
             p1.Register(t2);
-            p2.Register(t2);      
+            p2.Register(t2);
             t.StartTimer();
             t2.StartTimer();
             Console.ReadKey();
-            t.SetEventData(new TimerEventData("New DDOS!!","info"));
+            t.SetEventData(new TimerEventData("New DDOS!!", "info"));
             p1.Unregister(t);
             Console.ReadKey();
             t.StopTimer();

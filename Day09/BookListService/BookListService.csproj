@@ -48,6 +48,7 @@
     <Compile Include="BookListServices.cs" />
     <Compile Include="IBookListStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XmlBookListStorage.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Libary\Library.csproj">

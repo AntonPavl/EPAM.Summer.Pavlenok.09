@@ -11,7 +11,7 @@ namespace BookListService
 {
     public class BookListServices
     {
-        private static Logger logger = LogManager.GetCurrentClassLogger();
+        #region comparator
         private class Comparer : IComparer<Book>
         {
             public int Compare(Book a, Book b)
@@ -22,8 +22,9 @@ namespace BookListService
                 return a.Title.CompareTo(b.Title);
             }
         }
-
         private static IComparer<Book> Default = new Comparer();
+        #endregion
+
         public List<Book> Books { get;  }
         /// <summary>
         /// create book list service
@@ -32,29 +33,27 @@ namespace BookListService
         public BookListServices(List<Book> books)
         {
             Books = books;
-            logger.Info("BLS created");
         }
+
         /// <summary>
         /// Add book to List
         /// </summary>
         /// <param name="book">Add book</param>
         public void AddBook(Book book)
         {
-            logger.Info("Start add book operation");
             if (!Books.Contains(book)) Books.Add(book);
-            logger.Info("Add book succes");
 
         }
+
         /// <summary>
         /// Remove book from list
         /// </summary>
         /// <param name="book">Remove books</param>
         public void RemoveBook(Book book)
         {
-            logger.Info("Start remove book operation");
             if (Books.Contains(book)) Books.Remove(book);
-            logger.Info("Remove book succes");
         }
+
         /// <summary>
         /// Find book by criterion
         /// </summary>
@@ -64,6 +63,7 @@ namespace BookListService
         {
             return Books.First(tag);
         }
+
         /// <summary>
         /// Sort books by criterion
         /// </summary>
@@ -72,6 +72,12 @@ namespace BookListService
         {
             if (comparator == null) comparator = Default;
             Books.Sort(comparator);
+        }
+
+        public void Save(IBookListStorage ibls)
+        {
+            if (ReferenceEquals(ibls, null)) throw new ArgumentNullException();
+            ibls.SaveBooks(Books);
         }
     }
 

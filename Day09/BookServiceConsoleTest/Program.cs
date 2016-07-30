@@ -25,7 +25,8 @@ namespace BookServiceConsoleTest
                 return -x.Id.CompareTo(y.Id);
             }
         }
-        static void Main(string[] args)
+
+        public static void Binary()
         {
             var bbls = new BinaryBookListStorage("temp.txt");
             List<Book> books = new List<Book>();
@@ -59,7 +60,26 @@ namespace BookServiceConsoleTest
             bls.SortBooksByTag(new ComparerById());
             Console.WriteLine("AfterSort 0 = " + books[0].Id);
             Console.WriteLine("AfterSort 1 = " + books[1].Id);
-            Console.ReadKey();
+        }
+
+        public static void Xml()
+        {
+            List<Book> books = new List<Book>();
+            for (int i = 0; i < 10; i++)
+            {
+                Book temp = new Book(RandomString(10), RandomString(10), i, i * 10);
+                books.Add(temp);
+            }
+            XmlBookListStorage xbls = new XmlBookListStorage(@"D:\2.xml");
+            xbls.SaveBooks(books);
+            books = null;
+            books = xbls.LoadBooks();
+            books = null;
+        }
+        static void Main(string[] args)
+        {
+            Xml();
+           // Console.ReadKey();
         }
     }
 }

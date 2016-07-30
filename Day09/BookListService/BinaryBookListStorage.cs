@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace BookListService
 {
-  public class BinaryBookListStorage : IBookListStorage
+    public class BinaryBookListStorage : IBookListStorage
     {
-        private string filepath;
+       private string filepath;
         /// <summary>
         /// create book Storage
         /// </summary>
-        /// <param name="fileName"></param>
-        public BinaryBookListStorage(string fileName)
+        /// <param name="filePath"></param>
+        public BinaryBookListStorage(string filePath)
         {
-            filepath = fileName;
-            //if (!File.Exists(fileName)) File.Create(fileName);
+            filepath = filePath;
+            if (!File.Exists(filePath)) File.Create(filePath);
         }
         /// <summary>
         /// Load books from file
@@ -57,6 +57,6 @@ namespace BookListService
                     writer.Write(book.NumberOfPages);
                 }
             }
-        }
+        } 
     }
 }
